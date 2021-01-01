@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60294506-6fad-4a39-95a7-31a74d17e897" name="Default Changelist" comment="" />
+    <list default="true" id="60294506-6fad-4a39-95a7-31a74d17e897" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fr/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/category/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jetstream.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jetstream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +22,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -133,6 +148,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1lpsE6vntz2x6HTsqCBGkyfETS9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -181,7 +197,8 @@
       <option name="presentableId" value="Default" />
       <updated>1608305254172</updated>
       <workItem from="1608305256322" duration="5642000" />
-      <workItem from="1609166967045" duration="1261000" />
+      <workItem from="1609166967045" duration="7013000" />
+      <workItem from="1609513407430" duration="3803000" />
     </task>
     <servers />
   </component>
