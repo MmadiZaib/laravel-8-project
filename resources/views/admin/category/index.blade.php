@@ -27,21 +27,28 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col"># Serial No</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Category Name</th>
+                            <th scope="col">User</th>
                             <th scope="col">Created At</th>
+                            <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
 
+                        @foreach($categories as $category)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $category->name }} </td>
+                            <td>{{ $category->user->name }}</td>
+                            <td>{{ $category->created_at->diffForHumans() }}</td>
+                            <td>
+                                <a href="{{ route('edit.category', ['id' => $category->id ]) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('delete.category', ['id' => $category->id]) }}" class="btn btn-danger">Delete</a>
+                            </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
+                    {{ $categories->links() }}
 
                 </div>
             </div>
@@ -62,6 +69,43 @@
                             <button type="submit" class="btn btn-primary">Add Category</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trash part -->
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Trash List
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Category Name</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Deleted At</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($trashCategories as $trash)
+                            <tr>
+                                <td>{{ $trash->name }} </td>
+                                <td>{{ $trash->user->name }}</td>
+                                <td>{{ $trash->deleted_at->diffForHumans() }}</td>
+                                <td>
+                                    <a href="{{ route('restore.category', ['id' => $category->id ]) }}" class="btn btn-info">Restore</a>
+                                    <a href="{{ route('permanentDelete.category', ['id' => $trash->id]) }}" class="btn btn-danger">Permanent Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    {{ $trashCategories->links() }}
 
                 </div>
             </div>

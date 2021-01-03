@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Models\User;
@@ -28,8 +29,23 @@ Route::get('about', function () {
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 
 // Category controller
-Route::get('/category/all', [CategoryController::class, 'allCategory'])->name('all.category');
-Route::post('category/add', [CategoryController::class, 'addCategory'])->name('store.category');
+Route::prefix('category')->group(function () {
+    Route::get('all', [CategoryController::class, 'allCategory'])->name('all.category');
+    Route::post('add', [CategoryController::class, 'addCategory'])->name('store.category');
+    Route::get('edit/{id}', [CategoryController::class, 'editCategory'])->name('edit.category');
+    Route::post('update/{id}', [CategoryController::class, 'updateCategory'])->name('update.category');
+    Route::get('delete/{id}', [CategoryController::class, 'deleteCategory'])->name('delete.category');
+    Route::get('restore/{id}', [CategoryController::class, 'restoreCategory'])->name('restore.category');
+    Route::get('pdelete/{id}', [CategoryController::class, 'permanentDeleteCategory'])->name('permanentDelete.category');
+});
+
+
+Route::prefix('brand')->group(function () {
+    Route::get('all', [BrandController::class, 'allBrand'])->name('all.brand');
+    Route::post('add', [BrandController::class, 'addBrand'])->name('store.brand');
+    Route::get('edit/{id}', [BrandController::class, 'editBrand'])->name('edit.brand');
+    Route::get('delete/{id}', [BrandController::class, 'deleteBrand'])->name('delete.brand');
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
