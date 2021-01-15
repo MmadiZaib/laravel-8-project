@@ -6,6 +6,7 @@ use App\Models\Brand;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Image;
 
 class BrandController extends Controller
 {
@@ -27,17 +28,23 @@ class BrandController extends Controller
             'name.required' => 'Please Input Brand Name',
         ]);
 
-        $brand_image = $request->file('brand_image');
-        $extension = strtolower($brand_image->getClientOriginalExtension());
-        $imageName = sprintf('%s.%s', hexdec(uniqid()), $extension);
-        $location = self::BRAND_IMAGE_PATH;
-        $image = sprintf('%s%s', $location, $imageName);
-        $brand_image->move($location, $imageName);
+        if ($request->hasFile('brand_image')){
+            $brand_image = $request->file('brand_image');
+//            $extension = strtolower($brand_image->getClientOriginalExtension());
+//            $imageName = sprintf('%s.%s', hexdec(uniqid()), $extension);
+//            $location = self::BRAND_IMAGE_PATH;
+//            $image = sprintf('%s%s', $location, $imageName);
+//            $brand_image->move($location, $imageName);
 
-        $brand = new Brand();
-        $brand->name = $request->name;
-        $brand->brand_image  = $image;
-        $brand->save();
+            $unique_name = sprintf('%s.%s',  hexdec(uniqid()), $brand_image->getClientOriginalExtension());
+            Image::make($brand_image)->resize(300, 200)->save(sprintf('%s%s', self::BRAND_IMAGE_PATH, $unique_name));
+            $lastImage = self::BRAND_IMAGE_PATH . $unique_name;
+
+            $brand = new Brand();
+            $brand->name = $request->name;
+            $brand->brand_image  = $lastImage;
+            $brand->save();
+        }
 
         return Redirect::back()->with('success', 'Brand added successfully');
     }
@@ -58,12 +65,10 @@ class BrandController extends Controller
             'name.required' => 'Please Input Brand Name',
         ]);
 
-        $old_image = $request->old_image;
 
-        $brand_image = $request->file('brand_image');
-
-        if ($brand_image)
+        if ($request->hasFile('brand_image'))
         {
+            $brand_image = $request->file('brand_image');
             $extension = strtolower($brand_image->getClientOriginalExtension());
             $imageName = sprintf('%s.%s', hexdec(uniqid()), $extension);
             $location = self::BRAND_IMAGE_PATH;
@@ -89,6 +94,10 @@ class BrandController extends Controller
 
     public function deleteBrand(Request $request, int $id)
     {
+        $brand = Brand::find($id);
+        unlink($brand->brand_image);
+        $brand->delete();
 
+        return Redirect::route('all.brand')->with('success', 'Brand deleted successfully');
     }
 }

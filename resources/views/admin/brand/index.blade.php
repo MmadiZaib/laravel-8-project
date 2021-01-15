@@ -42,7 +42,7 @@
                                 <td>{{ $brand->created_at->diffForHumans() }}</td>
                                 <td>
                                     <a href="{{ route('edit.brand', ['id' => $brand->id]) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('delete.brand', ['id' => $brand->id]) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('delete.brand', ['id' => $brand->id]) }}" onclick="return confirm('Are you sure to delete')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
