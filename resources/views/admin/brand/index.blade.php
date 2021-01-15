@@ -41,7 +41,7 @@
                                 <td><img src="{{ asset($brand->brand_image) }}" alt="" style="height: 70px; width: 70px;"></td>
                                 <td>{{ $brand->created_at->diffForHumans() }}</td>
                                 <td>
-                                    <a href="{{ route('edit.brand', ['id' => $brand->id ]) }}" class="btn btn-info">Edit</a>
+                                    <a href="{{ route('edit.brand', ['id' => $brand->id]) }}" class="btn btn-info">Edit</a>
                                     <a href="{{ route('delete.brand', ['id' => $brand->id]) }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
