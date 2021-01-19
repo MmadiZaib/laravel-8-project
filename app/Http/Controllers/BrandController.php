@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\MultiPicture;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Image;
 
@@ -13,6 +14,12 @@ class BrandController extends Controller
 {
     public const BRAND_IMAGE_PATH = 'image/brand/';
     public const MULTI_PATH = 'image/multi/';
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function allBrand()
     {
@@ -123,5 +130,16 @@ class BrandController extends Controller
         }
 
         return Redirect::back()->with('success', 'Added successfully');
+    }
+
+    public function logout(Request $request)
+    {
+       Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return Redirect()->route('login')->with('success', 'User logout');
     }
 }

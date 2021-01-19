@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function allCategory()
     {
         $categories = Category::latest()->paginate(5);
