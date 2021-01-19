@@ -22,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 Route::get('about', function () {
    return view('about');
 })->name('about');
