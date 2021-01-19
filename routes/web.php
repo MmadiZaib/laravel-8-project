@@ -46,6 +46,8 @@ Route::prefix('brand')->group(function () {
     Route::get('edit/{id}', [BrandController::class, 'editBrand'])->name('edit.brand');
     Route::post('update/{id}', [BrandController::class, 'updateBrand'])->name('update.brand');
     Route::get('delete/{id}', [BrandController::class, 'deleteBrand'])->name('delete.brand');
+    Route::get('multi/image', [BrandController::class, 'multiPicture'])->name('multi.image');
+    Route::post('multi/add', [BrandController::class, 'storeImages'])->name('store.image');
 });
 
 
